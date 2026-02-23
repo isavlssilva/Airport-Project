@@ -6,6 +6,7 @@ import gm.dev.isa.airports.service.AirportService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -29,5 +30,11 @@ public class AirportController {
         return result;
         
     }
+    
+    @GetMapping("/city/{cityName}")
+    public List<Airport> findByIgnoreCase(@PathVariable String cityName){
+        List<Airport> result = airportService.findByCity(cityName);
+        return result;
+        
+    }
 }
-
