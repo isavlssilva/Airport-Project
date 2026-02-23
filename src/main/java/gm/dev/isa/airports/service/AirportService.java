@@ -1,5 +1,6 @@
 package gm.dev.isa.airports.service;
 
+import gm.dev.isa.airports.DTO.AirportMinDTO;
 import gm.dev.isa.airports.entities.Airport;
 import gm.dev.isa.airports.repositories.AirportRepository;
 import java.util.List;
@@ -30,5 +31,16 @@ public class AirportService {
         List<Airport> result = airportRepository.findByCityIgnoreCase(city);
         return result;
     }
-
+    // Retorna DTO AirportsMinDto filtrado por country (pais)    
+    // @param country
+    // @Return
+     
+     public List<AirportMinDTO> findByCountry(String country){
+         List<Airport> resultAirport = airportRepository.findByCountryIgnoreCase(country);
+         
+         List<AirportMinDTO> resultDTO = resultAirport.stream().map(x -> new AirportMinDTO(x)).toList();
+         
+         return resultDTO;
+     }
+     
 }
