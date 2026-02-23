@@ -4,6 +4,8 @@
  */
 package gm.dev.isa.airports.DTO;
 
+import gm.dev.isa.airports.projections.AirportNearMeProjection;
+
 /**
  *
  * @author digma
@@ -14,25 +16,26 @@ public class AirportNearMeDTO {
     private String name;
     private String city;
     private String iataCode;
-    private String latitude;
-    private String longitude;
-    private String altitude;
-    private String distanciaKM;
+    private double latitude;
+    private double longitude;
+    private double altitude;
+    private double distanciaKM;
 
     public AirportNearMeDTO() {
     }
 
-    public AirportNearMeDTO(long id, String name, String city, String iataCode, String latitude, String longitude, String altitude, String distanciaKM) {
-        this.id = id;
-        this.name = name;
-        this.city = city;
-        this.iataCode = iataCode;
-        this.latitude = latitude;
-        this.longitude = longitude;
-        this.altitude = altitude;
-        this.distanciaKM = distanciaKM;
+        public AirportNearMeDTO(AirportNearMeProjection airportProjection){
+        this.id = airportProjection.getId();
+        this.name = airportProjection.getName();
+        this.city = airportProjection.getCity();
+        this.iataCode = airportProjection.getIataCode();
+        this.latitude = airportProjection.getLatitude();
+        this.longitude = airportProjection.getLongitude();
+        this.altitude = airportProjection.getAltitude();
+        this.distanciaKM = airportProjection.getDistanciaKM();
+   
     }
-
+    
     public long getId() {
         return id;
     }
@@ -49,19 +52,19 @@ public class AirportNearMeDTO {
         return iataCode;
     }
 
-    public String getLatitude() {
+    public double getLatitude() {
         return latitude;
     }
 
-    public String getLongitude() {
+    public double getLongitude() {
         return longitude;
     }
 
-    public String getAltitude() {
+    public double getAltitude() {
         return altitude;
     }
 
-    public String getDistanciaKM() {
+    public double getDistanciaKM() {
         return distanciaKM;
     }
     

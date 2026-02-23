@@ -1,7 +1,9 @@
 package gm.dev.isa.airports.service;
 
 import gm.dev.isa.airports.DTO.AirportMinDTO;
+import gm.dev.isa.airports.DTO.AirportNearMeDTO;
 import gm.dev.isa.airports.entities.Airport;
+import gm.dev.isa.airports.projections.AirportNearMeProjection;
 import gm.dev.isa.airports.repositories.AirportRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,6 +55,13 @@ public class AirportService {
          
      }
      
+     public List<AirportNearMeDTO> findNearMe(double latitude, double longitude){
+         List<AirportNearMeProjection> resultNearAirports = airportRepository.findNearMe(latitude, longitude);
+         
+         List<AirportNearMeDTO> resultDTO = resultNearAirports.stream().map(x -> new AirportNearMeDTO(x)).toList();
+         
+         return resultDTO;
+     }
      
      
 }
