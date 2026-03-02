@@ -33,7 +33,7 @@ public interface AirportRepository extends JpaRepository<Airport, Long> {
                                        distanciaKM
                                        from AIRPORT
                                        order by distanciaKM
-                                       limit 10;""")
+                                       limit 10;"""     )
     List<AirportNearMeProjection> findNearMe(double latOrigem, double lonOrigem);
     
     
